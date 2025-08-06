@@ -30,7 +30,10 @@ WORKDIR /data
 # 复制执行文件
 COPY --from=builder /data/app /data
 
-
+# 使用 apt 安装 curl 和证书
+RUN apt update && \
+    apt install -y --no-install-recommends curl ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
 #
 EXPOSE 3000
