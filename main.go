@@ -7,11 +7,6 @@ import (
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	// 确保只响应 GET 方法
-	if r.Method != http.MethodGet {
-		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
-		return
-	}
 	fmt.Fprintln(w, "Hello, world!")
 }
 
