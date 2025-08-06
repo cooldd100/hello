@@ -1,4 +1,4 @@
-FROM golang:1.22.2-bookworm as builder
+FROM public.ecr.aws/docker/library/golang:1.22.2-bookworm as builder
 
 # 创建工作目录
 RUN mkdir /data
@@ -15,7 +15,7 @@ COPY . /data
 RUN cd /data && go build -o app
 
 # slim
-FROM debian:12.5-slim
+FROM public.ecr.aws/debian/debian:12.5-slim
 
 # 项目配置环境变量
 ENV GOENV prod_cn
